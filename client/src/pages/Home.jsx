@@ -297,7 +297,7 @@ function Home() {
             >
               {poem.coverImage && (
                 <img
-                  src={`http://localhost:5000${poem.coverImage}`}
+                  src={`${import.meta.env.VITE_API_URL}${poem.coverImage}`}
                   alt=""
                   style={{
                     width: "100%",
