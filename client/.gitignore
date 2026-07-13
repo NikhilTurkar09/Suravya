@@ -5,9 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 # Dependencies
-node_modules
-client/node_modules
-server/node_modules
+node_modules/
+client/node_modules/
+server/node_modules/
 # Build
 dist
 client/dist
