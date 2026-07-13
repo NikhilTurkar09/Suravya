@@ -139,6 +139,62 @@ app.delete("/delete-account", auth, async (req, res) => {
       });
     }
 
+    // Delete all poems created by user
+    await Poem.deleteMany({
+      author: userId,
+    });
+
+    // Delete user's favorites
+    await Favorite.deleteMany({
+      userId: userId,
+    });
+
+    // Remove likes from every poem
+    await Poem.updateMany(
+      {},
+      {
+        $pull: {
+          likedUsers: userId,
+        },
+      }
+    );
+
+    // Recalculate likes count
+    const poems = await Poem.find();
+
+    for (const poem of poems) {
+      poem.likes = poem.likedUsers.length;
+      await poem.save();
+    }
+
+    // Remove comments & replies of deleted user
+    for (const poem of poems) {
+      poem.comments = poem.comments
+        .filter(
+          (c) => c.user?.toString() !== userId
+        )
+        .map((c) => {
+          c.replies = c.replies.filter(
+            (r) => r.user?.toString() !== userId
+          );
+          return c;
+        });
+
+      await poem.save();
+    }
+
+    // Remove from followers/following
+    await User.updateMany(
+      {},
+      {
+        $pull: {
+          followers: userId,
+          following: userId,
+        },
+      }
+    );
+
+    // Finally delete user
     await User.findByIdAndDelete(userId);
 
     res.json({
