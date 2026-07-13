@@ -30,8 +30,11 @@ function Register() {
     alert("Registration Successful ✅");
     navigate("/login");
   } catch (err) {
-    alert("Server Error");
-  }
+  console.log(err);
+  console.log(err.response);
+
+  alert(err.response?.data?.message || err.message);
+}
 };
 
   return (

@@ -14,7 +14,6 @@ const Poem = require("./models/poem");
 const Comment = require("./models/comment");
 const Like = require("./models/Like");
 const Favorite = require("./models/Favorite");
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -127,7 +126,32 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
+app.delete("/delete-account", auth, async (req, res) => {
+  try {
+    const userId = req.user.id;
 
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    await User.findByIdAndDelete(userId);
+
+    res.json({
+      success: true,
+      message: "Account deleted successfully",
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+});
 // ================= POEMS ROUTES =================
 
 app.post("/poems", auth, poemUpload, async (req, res) => {

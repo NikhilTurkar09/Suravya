@@ -30,8 +30,6 @@ function Profile() {
 
     return () => window.removeEventListener("favoriteChanged", refresh);
   }, []);
-
-  // मेमोरी लीक्स से बचने के लिए ऑब्जेक्ट URLs का क्लीन-अप
   useEffect(() => {
     return () => {
       if (avatar && typeof avatar !== "string") URL.revokeObjectURL(avatar);
@@ -138,7 +136,28 @@ function Profile() {
       prompt("Copy this link:", url);
     }
   };
+const deleteAccount = async () => {
+  const ok = window.confirm(
+    "Are you sure? This action cannot be undone."
+  );
 
+  if (!ok) return;
+
+  try {
+    const res = await api.delete("/delete-account");
+
+    if (res.data.success) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+
+      alert("Account Deleted Successfully");
+
+      navigate("/login");
+    }
+  } catch (err) {
+    alert(err.response?.data?.message || "Delete Failed");
+  }
+};
   return (
     <div
       style={{
@@ -338,6 +357,20 @@ function Profile() {
           >
             🔗 Share Profile
           </button>
+          <button
+  onClick={deleteAccount}
+  style={{
+    background: "#dc2626",
+    color: "white",
+    border: "none",
+    padding: "12px 25px",
+    borderRadius: "10px",
+    cursor: "pointer",
+    fontWeight: "bold",
+  }}
+>
+  🗑 Delete Account
+</button>
         </div>
       </div>
 
