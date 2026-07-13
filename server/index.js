@@ -10,8 +10,8 @@ require("dotenv").config();
 const auth = require("./middleware/auth");
 const admin = require("./middleware/admin");
 const User = require("./models/User");
-const Poem = require("./models/Poem");
-const Comment = require("./models/Comment");
+const Poem = require("./models/poem");
+const Comment = require("./models/comment");
 const Like = require("./models/Like");
 const Favorite = require("./models/Favorite");
 
