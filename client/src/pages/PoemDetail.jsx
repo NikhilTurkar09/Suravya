@@ -159,17 +159,17 @@ const toggleFavorite = async () => {
     <div style={{ maxWidth: "950px", margin: "auto", padding: "35px 20px" }}>
       {poemData.coverImage && (
         <img
-          src={`http://localhost:5000${poemData.coverImage}`}
-          alt=""
-          style={{
-            width: "100%",
-            height: "420px",
-            objectFit: "cover",
-            borderRadius: "20px",
-            marginBottom: "35px",
-            boxShadow: "0 18px 45px rgba(0,0,0,.35)",
-          }}
-        />
+  src={`${import.meta.env.VITE_API_URL}${poemData.coverImage}`}
+  alt=""
+  style={{
+    width: "100%",
+    height: "420px",
+    objectFit: "cover",
+    borderRadius: "20px",
+    marginBottom: "35px",
+    boxShadow: "0 18px 45px rgba(0,0,0,.35)",
+  }}
+/>
       )}
 
       <h1
@@ -340,9 +340,9 @@ const toggleFavorite = async () => {
           <h3>🎙️ श्रव्य पाठ</h3>
           <audio controls style={{ width: "100%" }}>
             <source
-              src={`http://localhost:5000${poemData.audio}`}
-              type="audio/mpeg"
-            />
+  src={`${import.meta.env.VITE_API_URL}${poemData.audio}`}
+  type="audio/mpeg"
+/>
             Your browser does not support audio.
           </audio>
         </div>

@@ -77,15 +77,15 @@ function EditPoem() {
         <div style={{ marginBottom: "20px", padding: "15px", background: "#1e293b", borderRadius: "12px" }}>
           <h3 style={{ marginTop: 0 }}>Current Cover</h3>
           <img
-            src={`http://localhost:5000${poem.coverImage}`}
-            alt="Current Cover"
-            style={{
-              width: "260px",
-              maxHeight: "180px",
-              objectFit: "cover",
-              borderRadius: "12px"
-            }}
-          />
+  src={`${import.meta.env.VITE_API_URL}${poem.coverImage}`}
+  alt="Current Cover"
+  style={{
+    width: "260px",
+    maxHeight: "180px",
+    objectFit: "cover",
+    borderRadius: "12px"
+  }}
+/>
           <br /><br />
           <button
             onClick={() => setRemoveCover(true)}
@@ -119,9 +119,9 @@ function EditPoem() {
         <div style={{ marginTop: "25px", marginBottom: "20px", padding: "15px", background: "#1e293b", borderRadius: "12px" }}>
           <h3 style={{ marginTop: 0 }}>Current Audio</h3>
           <audio controls>
-            <source src={`http://localhost:5000${poem.audio}`} />
-            Your browser does not support the audio element.
-          </audio>
+  <source src={`${import.meta.env.VITE_API_URL}${poem.audio}`} />
+  Your browser does not support the audio element.
+</audio>
           <br /><br />
           <button
             onClick={() => setRemoveAudio(true)}

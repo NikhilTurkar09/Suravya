@@ -74,15 +74,15 @@ console.log(isFollowing);
         }}
       >
         {writer.cover && (
-          <img
-            src={`http://localhost:5000${writer.cover}`}
-            alt="Cover"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
+         <img
+  src={`${import.meta.env.VITE_API_URL}${writer.cover}`}
+  alt="Cover"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  }}
+/>
         )}
       </div>
 
@@ -95,16 +95,16 @@ console.log(isFollowing);
       >
         {writer.avatar ? (
           <img
-            src={`http://localhost:5000${writer.avatar}`}
-            alt="Avatar"
-            style={{
-              width: "140px",
-              height: "140px",
-              borderRadius: "50%",
-              border: "5px solid white",
-              objectFit: "cover",
-            }}
-          />
+  src={`${import.meta.env.VITE_API_URL}${writer.avatar}`}
+  alt="Avatar"
+  style={{
+    width: "140px",
+    height: "140px",
+    borderRadius: "50%",
+    border: "5px solid white",
+    objectFit: "cover",
+  }}
+/>
         ) : (
           <div
             style={{

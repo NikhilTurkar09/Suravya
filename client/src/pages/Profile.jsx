@@ -159,19 +159,19 @@ function Profile() {
       >
         {(cover || user.cover) && (
           <img
-            src={
-              cover
-                ? URL.createObjectURL(cover)
-                : `http://localhost:5000${user.cover}`
-            }
-            alt="cover"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "18px",
-            }}
-          />
+  src={
+    cover
+      ? URL.createObjectURL(cover)
+      : `${import.meta.env.VITE_API_URL}${user.cover}`
+  }
+  alt="cover"
+  style={{
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    borderRadius: "18px",
+  }}
+/>
         )}
       </div>
 
@@ -184,22 +184,22 @@ function Profile() {
       >
         {avatar || user.avatar ? (
           <img
-            src={
-              avatar
-                ? URL.createObjectURL(avatar)
-                : `http://localhost:5000${user.avatar}`
-            }
-            alt="avatar"
-            style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              border: "5px solid white",
-              objectFit: "cover",
-              position: "relative",
-              zIndex: 10,
-            }}
-          />
+  src={
+    avatar
+      ? URL.createObjectURL(avatar)
+      : `${import.meta.env.VITE_API_URL}${user.avatar}`
+  }
+  alt="avatar"
+  style={{
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%",
+    border: "5px solid white",
+    objectFit: "cover",
+    position: "relative",
+    zIndex: 10,
+  }}
+/>
         ) : (
           <div
             style={{
@@ -430,16 +430,16 @@ function Profile() {
           >
             {p.coverImage && (
               <img
-                src={`http://localhost:5000${p.coverImage}`}
-                alt=""
-                style={{
-                  width: "100%",
-                  height: "220px",
-                  objectFit: "cover",
-                  borderRadius: "10px",
-                  marginBottom: "15px",
-                }}
-              />
+  src={`${import.meta.env.VITE_API_URL}${p.coverImage}`}
+  alt=""
+  style={{
+    width: "100%",
+    height: "220px",
+    objectFit: "cover",
+    borderRadius: "10px",
+    marginBottom: "15px",
+  }}
+/>
             )}
 
             <h3>{p.title}</h3>
