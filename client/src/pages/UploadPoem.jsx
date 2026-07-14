@@ -34,7 +34,7 @@ function UploadPoem() {
   };
 
   const handleSubmit = async () => {
-    if (!title || !ras || !poem) {
+    if (!title || !poem) {
       alert("सभी फ़ील्ड भरें");
       return;
     }
@@ -186,7 +186,7 @@ function UploadPoem() {
 
       <input
         type="text"
-        placeholder="🌸 रस (Optional)"
+        placeholder="🌸 रस (Optional) (कविता व गीत हेतु भरें)"
         value={ras}
         onChange={(e) => setRas(e.target.value)}
         style={{
