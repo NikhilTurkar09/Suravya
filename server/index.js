@@ -14,7 +14,6 @@ const Comment = require("./models/comment");
 const Like = require("./models/Like");
 const Favorite = require("./models/Favorite");
 const app = express();
-const fs = require("fs");
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -923,17 +922,6 @@ app.get("/fix-authors", async (req, res) => {
     res.send("Authors Fixed Successfully");
   } catch (err) {
     res.status(500).send(err.message);
-  }
-});
-app.get("/check-uploads", (req, res) => {
-  try {
-    const files = fs.readdirSync(path.join(__dirname, "uploads"));
-    res.json(files);
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: err.message,
-    });
   }
 });
 // ================= FINAL SERVER INITIALIZATION =================

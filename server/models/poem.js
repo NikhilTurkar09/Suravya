@@ -14,7 +14,7 @@ const PoemSchema = new mongoose.Schema(
 
     ras: {
       type: String,
-      required: true,
+      default: "",
     },
 
     poem: {

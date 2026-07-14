@@ -186,7 +186,7 @@ function UploadPoem() {
 
       <input
         type="text"
-        placeholder="🌸 रस"
+        placeholder="🌸 रस (Optional)"
         value={ras}
         onChange={(e) => setRas(e.target.value)}
         style={{

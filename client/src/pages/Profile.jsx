@@ -476,16 +476,16 @@ const deleteAccount = async () => {
             )}
 
             <h3>{p.title}</h3>
-
-            <p
-              style={{
-                color: "#ef4444",
-                fontWeight: "bold",
-              }}
-            >
-              {p.ras}
-            </p>
-
+{p.ras && (
+  <p
+    style={{
+      color: "#ef4444",
+      fontWeight: "bold",
+    }}
+  >
+    {p.ras}
+  </p>
+)}
             <p>❤️ {p.likes}</p>
 
             {p.audio && (
